@@ -10,6 +10,16 @@ class Book
      */
     private $penerbit = 'Elex Media';
 
+    private function __construct($penerbit)
+    {
+        $this->penerbit = $penerbit;
+    }
+
+    public function __destruct()
+    {
+        echo 'Penerbit buku ini adalah ' . $this->penerbit . '<br/>';
+    }
+
     /**
      * Method untuk mendapatkan nama penerbit
      *

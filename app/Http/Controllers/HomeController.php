@@ -12,7 +12,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $book = new Book();
+        $book = new Book('Airlangga');
         return $book->getPenerbit();
     }
 }
