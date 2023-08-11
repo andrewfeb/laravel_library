@@ -10,5 +10,10 @@ class ComputerBook extends Book
     {
         return 'Ini buku komputer dengan judul Laravel 10';
     }
+
+    public function getPenerbit()
+    {
+        return 'Penerbit Airlangga';
+    }
 }
 ?>

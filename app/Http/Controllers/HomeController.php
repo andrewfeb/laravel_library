@@ -2,7 +2,6 @@
 // File app\Http\Controllers\HomeController.php
 namespace App\Http\Controllers;
 
-use App\Oop\Book;
 use App\Oop\ComputerBook;
 use App\Oop\CookingBook;
 
@@ -16,6 +15,7 @@ class HomeController extends Controller
         $book = new ComputerBook();
         $cook = new CookingBook();
 
-        return $book->title().'<br/>'.$cook->title();
+        //return $book->title().'<br/>'.$cook->title();
+        return $book->getPenerbit();
     }
 }
