@@ -5,7 +5,7 @@ namespace App\Oop;
 /**
  * Parent class
  */
-class Book
+abstract class Book
 {
     /**
      * Property untuk penerbit
@@ -21,9 +21,11 @@ class Book
      */
     protected $kategori;
 
-    public function __construct($penerbit)
+    public function __construct($penerbit = null)
     {
-        $this->penerbit = $penerbit;
+        if (!is_null($penerbit)) {
+            $this->penerbit = $penerbit;
+        }
     }
 
     /**
@@ -35,5 +37,7 @@ class Book
     {
         return $this->penerbit;
     }
+
+    abstract protected function title();
 }
 ?>

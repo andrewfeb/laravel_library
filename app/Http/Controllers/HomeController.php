@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Oop\Book;
 use App\Oop\ComputerBook;
+use App\Oop\CookingBook;
 
 class HomeController extends Controller
 {
@@ -12,8 +13,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $book = new ComputerBook('Airlangga');
-        $book->kategori = 'Computer Book';
-        return $book->kategori;
+        $book = new ComputerBook();
+        $cook = new CookingBook();
+
+        return $book->title().'<br/>'.$cook->title();
     }
 }

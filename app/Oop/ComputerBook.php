@@ -4,18 +4,11 @@ namespace App\Oop;
 
 use App\Oop\Book;
 
-/**
- * Child class
- */
 class ComputerBook extends Book
 {
-    public function __construct($penerbit)
+    public function title()
     {
-        Parent::__construct($penerbit);
-
-        //$this->kategori = 'Computer Book<br/>';
-
-        //echo $this->kategori;
+        return 'Ini buku komputer dengan judul Laravel 10';
     }
 }
 ?>
