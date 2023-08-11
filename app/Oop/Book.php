@@ -10,7 +10,7 @@ class Book
      */
     private $penerbit = 'Elex Media';
 
-    private function __construct($penerbit)
+    public function __construct($penerbit)
     {
         $this->penerbit = $penerbit;
     }
