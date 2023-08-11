@@ -12,6 +12,10 @@ class ComputerBook extends Book
     public function __construct($penerbit)
     {
         Parent::__construct($penerbit);
+
+        //$this->kategori = 'Computer Book<br/>';
+
+        //echo $this->kategori;
     }
 }
 ?>

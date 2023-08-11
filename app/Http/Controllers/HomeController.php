@@ -1,8 +1,7 @@
 <?php
-
+// File app\Http\Controllers\HomeController.php
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Oop\Book;
 use App\Oop\ComputerBook;
 
@@ -14,6 +13,7 @@ class HomeController extends Controller
     public function index()
     {
         $book = new ComputerBook('Airlangga');
-        return $book->getPenerbit();
+        $book->kategori = 'Computer Book';
+        return $book->kategori;
     }
 }

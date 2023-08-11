@@ -14,6 +14,13 @@ class Book
      */
     private $penerbit = 'Elex Media';
 
+    /**
+     * Property untuk kategori
+     *
+     * @var string
+     */
+    protected $kategori;
+
     public function __construct($penerbit)
     {
         $this->penerbit = $penerbit;
