@@ -25,15 +25,6 @@ Route::get('hello', function () {
 
 Route::get('home', [HomeController::class, 'index'])->name('home');
 
-Route::get('books', [BookController::class, 'index'])
-    ->name('book.index');
-Route::get('books/{book}', [BookController::class, 'edit'])
-    ->name('book.edit');
-Route::post('books', [BookController::class, 'store'])->name('book.store');
-Route::put('books/{id}', [BookController::class, 'update'])->name('book.update');
-Route::delete('books/{id}', [BookController::class, 'destroy'])->name('book.destroy');
-
-Route::resources([
-    'books' => BookController::class,
-    'categories' => CategoryController::class
-]);
+Route::middleware('isadmin')->group(function() {
+    Route::get('books', [BookController::class, 'index'])->name('book.index');
+});
