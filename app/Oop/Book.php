@@ -1,6 +1,10 @@
 <?php
+// File app\Oop\Book.php
 namespace App\Oop;
 
+/**
+ * Parent class
+ */
 class Book
 {
     /**
@@ -13,11 +17,6 @@ class Book
     public function __construct($penerbit)
     {
         $this->penerbit = $penerbit;
-    }
-
-    public function __destruct()
-    {
-        echo 'Penerbit buku ini adalah ' . $this->penerbit . '<br/>';
     }
 
     /**

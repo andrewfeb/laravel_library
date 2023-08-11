@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Oop\Book;
+use App\Oop\ComputerBook;
 
 class HomeController extends Controller
 {
@@ -12,7 +13,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $book = new Book('Airlangga');
+        $book = new ComputerBook('Airlangga');
         return $book->getPenerbit();
     }
 }
