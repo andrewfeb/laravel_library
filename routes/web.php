@@ -19,12 +19,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('hello', function () {
-    return 'Hello World';
-});
-
 Route::get('home', [HomeController::class, 'index'])->name('home');
 
-Route::middleware('isadmin')->group(function() {
-    Route::get('books', [BookController::class, 'index'])->name('book.index');
-});
+Route::resource('books', BookController::class);

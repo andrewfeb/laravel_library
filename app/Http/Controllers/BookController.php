@@ -12,7 +12,7 @@ class BookController extends Controller
      */
     public function index()
     {
-        return 'Ini menu buku';
+        return view('book.index', ['category' => 'Komputer']);
     }
 
     /**
@@ -20,7 +20,7 @@ class BookController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -28,7 +28,7 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     // Sebelum menggunakan opsi --model
@@ -60,4 +60,7 @@ class BookController extends Controller
     {
         //
     }
+
+
+
 }
