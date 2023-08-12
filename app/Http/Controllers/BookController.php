@@ -1,4 +1,5 @@
 <?php
+// File app/Http/Controllers/BookController.php
 
 namespace App\Http\Controllers;
 
@@ -12,7 +13,9 @@ class BookController extends Controller
      */
     public function index()
     {
+        $books = Book::orderBy('judul', 'asc')->take(5)->get();
 
+        return view('book.index', compact('books'));
     }
 
     /**

@@ -2,5 +2,9 @@
 <x-app>
     <x-slot:title>Daftar Buku</x-slot>
 
-    Ini adalah halaman untuk menampilkan semua list buku
+    @foreach ($books as $book)
+        Judul: {{ $book->judul }}<br/>
+        Penerbit: {{ $book->penerbit }} <br/>
+        Penulis: {{ $book->penulis }} <br/><br/>
+    @endforeach
 </x-app>
