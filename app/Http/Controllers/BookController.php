@@ -31,6 +31,21 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
+        /*$book = new Book;
+
+        $book->judul = $request->input('judul');
+        $book->penerbit = $request->input('penerbit');
+        $book->penulis = $request->input('penulis');
+        $book->jumlah = $request->input('jumlah');
+        $book->save();*/
+        $book = Book::create([
+            'judul' => $request->input('judul'),
+            'penerbit' => $request->input('penerbit'),
+            'penulis' => $request->input('penulis'),
+            'jumlah' => $request->input('jumlah')
+        ]);
+
+        return redirect()->route('books.index');
 
     }
 
@@ -53,7 +68,13 @@ class BookController extends Controller
      */
     public function update(Request $request, Book $book)
     {
-        //
+        /*$book->judul = 'Laravel 10';
+        $book->save();*/
+        $book->update([
+            'judul' => $request->input('judul')
+        ]);
+
+        return redirect()->route('books.index');
     }
 
     /**
@@ -61,9 +82,8 @@ class BookController extends Controller
      */
     public function destroy(Book $book)
     {
-        //
+        $book->delete();
+
+        return redirect()->route('books.index');
     }
-
-
-
 }
