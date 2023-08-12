@@ -12,10 +12,7 @@ class BookController extends Controller
      */
     public function index()
     {
-        return view('book.index', [
-            'category' => 'Komputer',
-            'records' => ['buku 1', 'buku 2']
-        ]);
+
     }
 
     /**
