@@ -1,4 +1,5 @@
 <?php
+// File app/Models/User.php
 
 namespace App\Models;
 
@@ -42,4 +43,18 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    /**
+     * Get the personal record associated with the user.
+     */
+    public function personal(){
+        return $this->hasOne(Personal::class);
+    }
+
+    /**
+     * The roles that belong to the user.
+     */
+    public function roles() {
+        return $this->belongsToMany(Role::class);
+    }
 }

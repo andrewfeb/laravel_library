@@ -46,7 +46,6 @@ class BookController extends Controller
         ]);
 
         return redirect()->route('books.index');
-
     }
 
     // Sebelum menggunakan opsi --model
