@@ -23,7 +23,7 @@ class BookController extends Controller
      */
     public function create()
     {
-
+        return view('book.create');
     }
 
     /**
@@ -31,13 +31,23 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        /*$book = new Book;
+        $this->validate($request, [
+            'judul' => 'required|max:50',
+            'penerbit' => 'required|max:50',
+            'penulis' => 'required|max:50',
+            'jumlah' => 'required|numeric|between:0,10'
+        ],[
+            'judul.required' => 'Judul harus diisi',
+            'judul.max' => 'Panjang karakter judul <= 50 karakter',
+            'penerbit.required' => 'Penerbit harus diisi',
+            'penerbit.max' => 'Panjang karakter penerbit <= 50 karakter',
+            'penulis.required' => 'Penulis harus diisi',
+            'penulis.max' => 'Panjang karakter penulis <= 50 karakter',
+            'jumlah.required' => 'Jumlah harus diisi',
+            'jumlah.numeric' => 'Jumlah harus angka',
+            'jumlah.between' => 'Jumlah harus diantara 0 sampai 10'
+        ]);
 
-        $book->judul = $request->input('judul');
-        $book->penerbit = $request->input('penerbit');
-        $book->penulis = $request->input('penulis');
-        $book->jumlah = $request->input('jumlah');
-        $book->save();*/
         $book = Book::create([
             'judul' => $request->input('judul'),
             'penerbit' => $request->input('penerbit'),
@@ -45,10 +55,12 @@ class BookController extends Controller
             'jumlah' => $request->input('jumlah')
         ]);
 
-        return redirect()->route('books.index');
+        return redirect()->route('books.index')->with([
+            'status' => 'success',
+            'message' => 'Buku berhasil ditambah'
+        ]);
     }
 
-    // Sebelum menggunakan opsi --model
     public function show(Book $book)
     {
         //

@@ -28,6 +28,14 @@
   </nav>
   <main class="container-fluid my-3 px-4">
     <h3 class="mb-3"> {{ $title }} </h3>
+
+    @if (session('status'))
+    <div class="alert {{ session('status') == 'success' ? 'alert-success' : 'alert-warning'}} alert-dismissible fade show mb-3" role="alert">
+      {{ session('message') }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    @endif
+
     <div class="card">
       <div class="card-body">
         {{ $slot }}
