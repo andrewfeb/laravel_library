@@ -13,7 +13,7 @@ class BookController extends Controller
      */
     public function index()
     {
-        $books = Book::orderBy('judul', 'asc')->take(5)->get();
+        $books = Book::with('category:id,kategori')->orderBy('judul', 'asc')->paginate(10);
 
         return view('book.index', compact('books'));
     }
@@ -71,7 +71,7 @@ class BookController extends Controller
      */
     public function edit(Book $book)
     {
-        //
+        return view('book.edit', compact('book'));
     }
 
     /**
@@ -79,13 +79,34 @@ class BookController extends Controller
      */
     public function update(Request $request, Book $book)
     {
-        /*$book->judul = 'Laravel 10';
-        $book->save();*/
-        $book->update([
-            'judul' => $request->input('judul')
+        $this->validate($request, [
+            'judul' => 'required|max:50',
+            'penerbit' => 'required|max:50',
+            'penulis' => 'required|max:50',
+            'jumlah' => 'required|numeric|between:0,10'
+        ],[
+            'judul.required' => 'Judul harus diisi',
+            'judul.max' => 'Panjang karakter judul <= 50 karakter',
+            'penerbit.required' => 'Penerbit harus diisi',
+            'penerbit.max' => 'Panjang karakter penerbit <= 50 karakter',
+            'penulis.required' => 'Penulis harus diisi',
+            'penulis.max' => 'Panjang karakter penulis <= 50 karakter',
+            'jumlah.required' => 'Jumlah harus diisi',
+            'jumlah.numeric' => 'Jumlah harus angka',
+            'jumlah.between' => 'Jumlah harus diantara 0 sampai 10'
         ]);
 
-        return redirect()->route('books.index');
+        $book->update([
+            'judul' => $request->input('judul'),
+            'penerbit' => $request->input('penerbit'),
+            'penulis' => $request->input('penulis'),
+            'jumlah' => $request->input('jumlah')
+        ]);
+
+        return redirect()->route('books.index')->with([
+            'status' => 'success',
+            'message' => 'Buku berhasil diupdate'
+        ]);
     }
 
     /**
@@ -95,6 +116,9 @@ class BookController extends Controller
     {
         $book->delete();
 
-        return redirect()->route('books.index');
+        return redirect()->route('books.index')->with([
+            'status' => 'success',
+            'message' => 'Buku berhasil dihapus'
+        ]);
     }
 }
