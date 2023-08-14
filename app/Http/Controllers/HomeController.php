@@ -12,10 +12,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $book = new ComputerBook();
-        $cook = new CookingBook();
-
-        //return $book->title().'<br/>'.$cook->title();
-        return $book->getPenerbit();
+        return view('home');
     }
 }

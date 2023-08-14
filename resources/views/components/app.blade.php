@@ -9,24 +9,37 @@
 </head>
 <body class="bg-body-tertiary">
   <nav class="navbar bg-primary navbar-expand-lg" data-bs-theme="dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="{{ route('home') }}">Perpustakaan</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ route('books.index')}}">Buku</a>
-          </li>
-        </ul>
-      </div>
+    <div class="container">
+        <a class="navbar-brand" href="{{ route('home') }}">Perpustakaan</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('books.index')}}">Buku</a>
+            </li>
+          </ul>
+          <ul class="nav justify-content-end">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">{{ auth()->user()->name }}</a>
+              <ul class="dropdown-menu">
+                <li>
+                  <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit" class="dropdown-item"><i class="icon me-2 bi bi-box-arrow-right" aria-hidden="true"></i> Logout</button>
+                  </form>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
     </div>
   </nav>
-  <main class="container-fluid my-3 px-4">
+  <main class="container my-3 px-4">
     <h3 class="mb-3"> {{ $title }} </h3>
 
     @if (session('status'))
