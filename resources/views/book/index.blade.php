@@ -31,7 +31,7 @@
               <form method="post" action="{{ route('books.destroy', $book->id)}}">
                 @csrf
                 @method('delete')
-                <button type="submit" class="btn btn-danger" onclick="confirm('Anda yakin menghapus item ini?');">Hapus</button>
+                <button type="submit" class="btn btn-danger" onclick="return confirm('Anda yakin menghapus item ini?');">Hapus</button>
               </form>
             </td>
           </tr>
